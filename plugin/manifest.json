@@ -1,0 +1,23 @@
+{
+    "name": "YouTubeDownload+",
+    "version": "1.0.0",
+    "description": "Download your favorite YouTube videos with ease!",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": [
+        "notifications"
+    ],
+    "manifest_version": 3
+}
