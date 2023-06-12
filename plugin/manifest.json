@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Download your favorite YouTube videos with ease!",
     "action": {
-        "default_popup": "index.html"
+        "default_popup": "src/index.html"
     },
     "content_scripts": [
         {
@@ -11,7 +11,7 @@
                 "https://www.youtube.com/*"
             ],
             "js": [
-                "content.js"
+                "src/background.js"
             ],
             "run_at": "document_end"
         }

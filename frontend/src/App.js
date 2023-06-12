@@ -81,7 +81,9 @@ function App() {
       </nav>
       <div className="mx-auto grid grid-cols-12 gap-4 h-screen p-12">
         {
-          selected == null ? "" : (
+          selected == null ? (<div class="absolute inset-0 flex items-center justify-center">
+            <p class="text-center text-white">No downloaded content</p>
+          </div>) : (
             <div className="col-span-12 rounded-lg sm:col-span-9">
               <div className="relative accent rounded-xl shadow-xl ">
                 <video src={"http://127.0.0.1:8000/video/" + selected.id} controls className="w-full rounded-xl rounded-bl-none rounded-br-none"></video>

@@ -44,6 +44,7 @@ function extractCurrentVideo() {
 
 }
 
+// Call the fetchData function every 1 second
 // Send extracted data to the background script
 setInterval(() => {
     var results = extractRecommendedVideos();

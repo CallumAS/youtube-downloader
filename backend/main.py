@@ -22,6 +22,7 @@ app.add_middleware(
 
 
 queue = DownloadQueue()
+os.makedirs("downloads", exist_ok=True)
 
 app.mount("/downloads", StaticFiles(directory="downloads"), name="downloads")
 
