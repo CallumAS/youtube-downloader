@@ -1,4 +1,4 @@
-const baseUrl = "http://127.0.0.1:8000";
+export const baseUrl = "http://127.0.0.1:8000";
 
 export async function fetchHistory() {
     try {
@@ -10,36 +10,10 @@ export async function fetchHistory() {
     }
 }
 
-export function fetchVideo(videoId) {
-    fetch(`${baseUrl}/video/${videoId}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            const videoUrl = URL.createObjectURL(blob);
-            // Use the videoUrl to display the video or perform any further processing
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
-}
+export async function downloadVideo(video) {
+    const videoId = video.match(/(?:v=|\/embed\/|\/\d\/|\/vi\/|youtu\.be\/|\/v\/|\/e\/|\/watch\?v=|\/watch\?.+&v=)([^#\&\?\/]{11})/);
 
-export function downloadVideo(videoId) {
-    fetch(`${baseUrl}/download/${videoId}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.message);
-            // Process the download message here
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
+    const response = await fetch(`${baseUrl}/download/${videoId[1]}`);
+    const data = await response.json();
+    return data;
 }
-
-// Usage examples:
-fetchHistory();
-fetchVideo("video123");
-downloadVideo("video456");
